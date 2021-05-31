@@ -1,7 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import {View, Text, FlatList, StyleSheet} from "react-native";
 import {Avatar, ListItem} from "react-native-elements";
 import {LinearGradient} from "expo-linear-gradient";
+import axios from "axios";
 
 const style = StyleSheet.create({
     container: {
@@ -20,6 +21,26 @@ const style = StyleSheet.create({
 export function SearchedList (props) {
     const sounds = props.sounds;
     const navigation = props.navigation;
+
+    const handleSound = (sound) => {
+
+        console.log(sound.id);
+            axios.get('https://freesound.org/apiv2/sounds/' + sound.id +'?&token=SwLolZcTQXWhsHzHE2ym0IPuCZmzJnyzx1d0p6Xb')
+                .then(function (response) {
+                    if(response.data.id === 0){
+                        alert('aucun résultat!')
+                    } else {
+                        const sound = response.data;
+                        navigation.navigate('Sound', {
+                            sound: sound
+                        });
+                    }
+                })
+                .catch(function (error) {
+                    console.log(error);
+                });
+    }
+
     const renderItem = ({ item, index }) => (
         <ListItem style={style.container} linearGradientProps={{
             colors: index %2 === 0 ? ['#7F7FD5', '#86A8E7', '#91EAE4'] : ['#fe8c00', '#f83600'],
@@ -30,7 +51,7 @@ export function SearchedList (props) {
             <ListItem.Content>
                 <ListItem.Title style={style.title}>{item.name}</ListItem.Title>
             </ListItem.Content>
-            <ListItem.Chevron onPress={() => {console.log('clicked')}} color="white" />
+            <ListItem.Chevron onPress={() => {handleSound(item)}} color="white" />
         </ListItem>
     )
 

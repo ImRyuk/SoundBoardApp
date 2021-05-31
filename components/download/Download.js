@@ -34,8 +34,6 @@ export const Download = ({navigation}) => {
             });
     }
 
-
-
     return(
         <View style={styles.container} className="SearchComponent">
             <Search style={styles.content} handleSendRequest={sendRequest} />
