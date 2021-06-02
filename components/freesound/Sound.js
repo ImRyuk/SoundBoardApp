@@ -44,7 +44,7 @@ const TextItem = (props) => {
 
 export const Sound = (props) => {
 
-    const samples = useSelector(state => state.freesoundSamples.samples)
+    const samples = useSelector(state => state.samples.samples)
     const [sample, setSample] =  useState(props.route.params.sound);
     const dispatch = useDispatch();
 

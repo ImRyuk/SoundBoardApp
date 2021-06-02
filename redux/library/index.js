@@ -1,11 +1,11 @@
 // Imports: Dependencies
 import { combineReducers } from 'redux';
 // Imports: Reducers
-import freesoundReducer from './freesound/freesoundReducer';
+import sampleReducer from './sampleReducer';
 
 // Redux: Root Reducer
 const rootReducer = combineReducers({
-    freesoundReducer: freesoundReducer
+    freesoundReducer: sampleReducer
 });
 // Exports
 export default rootReducer;

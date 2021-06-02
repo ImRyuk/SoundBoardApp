@@ -22,7 +22,7 @@ const style = StyleSheet.create({
 export const Library = (props) => {
 
     const navigation = props.navigation;
-    const samples = useSelector(state => state.freesoundSamples.samples);
+    const samples = useSelector(state => state.samples.samples);
 
     const dispatch = useDispatch();
 

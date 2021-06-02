@@ -2,7 +2,7 @@ import {createStore, combineReducers, applyMiddleware, compose} from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import freesoundReducer from "./freesound/freesoundReducer";
+import sampleReducer from "./sampleReducer";
 import thunk from "redux-thunk";
 
 const persistConfig = {
@@ -12,7 +12,7 @@ const persistConfig = {
 };
 
 const rootReducer = combineReducers({
-    freesoundSamples: freesoundReducer,
+    samples: sampleReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
