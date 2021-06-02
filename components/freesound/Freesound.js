@@ -14,7 +14,7 @@ const styles = StyleSheet.create({
     item: {}
 });
 
-export const Download = ({navigation}) => {
+export const Freesound = ({navigation}) => {
 
     const[sounds, setSounds] = useState();
 

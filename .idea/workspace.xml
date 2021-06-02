@@ -2,14 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c96da48-7025-438b-9168-d37c7485923c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/assets/favicon.png" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/components/download/Sound.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/redux/library/freesound/freesoundReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/redux/library/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/redux/library/store.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/download/Download.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/download/Download.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/download/SearchedList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/download/SearchedList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/Sampler.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Sampler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/download/Download.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/freesound/Freesound.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/download/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/freesound/Search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/download/SearchedList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/freesound/SearchedList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/download/Sound.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/freesound/Sound.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/library/Library.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/library/Library.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux/library/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/library/freesound/actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -45,6 +52,8 @@
   </component>
   <component name="RecentsManager">
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\laragon\www\Licence\ReactNative\SoundBoardApp\redux\library" />
+      <recent name="C:\laragon\www\Licence\ReactNative\SoundBoardApp\redux\library\freesound" />
       <recent name="C:\laragon\www\Licence\ReactNative\SoundBoardApp\assets" />
       <recent name="C:\laragon\www\Licence\ReactNative\SoundBoardApp\components\library" />
       <recent name="C:\laragon\www\Licence\ReactNative\SoundBoardApp\components\download" />
@@ -62,7 +71,9 @@
       <workItem from="1622046472525" duration="1788000" />
       <workItem from="1622056340887" duration="2199000" />
       <workItem from="1622458974921" duration="7105000" />
-      <workItem from="1622471857807" duration="7539000" />
+      <workItem from="1622471857807" duration="7577000" />
+      <workItem from="1622567583075" duration="95000" />
+      <workItem from="1622643431024" duration="4274000" />
     </task>
     <servers />
   </component>

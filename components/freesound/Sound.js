@@ -1,8 +1,9 @@
-import React, {Component, useState} from 'react';
+import React, { useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View, Button} from "react-native";
 import {Image} from "react-native-elements";
-import {connect, useDispatch, useSelector} from 'react-redux';
+import {useDispatch, useSelector} from 'react-redux';
 import { Audio } from 'expo-av';
+import {addSample, removeSample} from "../../redux/library/freesound/actions";
 
 const style = StyleSheet.create({
     container: {
@@ -43,9 +44,28 @@ const TextItem = (props) => {
 
 export const Sound = (props) => {
 
+    const samples = useSelector(state => state.freesoundSamples.samples)
+    const [sample, setSample] =  useState(props.route.params.sound);
+    const dispatch = useDispatch();
+
+    const ifExists = (sample) => {
+        if (samples.filter(item => item.id === sample.id).length > 0) {
+            return true;
+        }
+        return false;
+    };
+
+
+    const add = () => {
+        dispatch(addSample(sample));
+    };
+
+    const remove = () => {
+        dispatch(removeSample(sample));
+    };
+
     const item = props.route.params.sound;
     const [sound, setSound] = useState();
-console.log(item);
 
     async function playSound() {
         console.log('Loading Sound');
@@ -53,7 +73,6 @@ console.log(item);
             {uri: item.previews['preview-lq-mp3']}
         );
         setSound(sound);
-
         console.log('Playing Sound');
         await sound.playAsync(); }
 
@@ -77,11 +96,12 @@ console.log(item);
             <TextItem value={item.description}/>
             <TextItem value={item.num_ratings}/>
             <TouchableOpacity
-                style={style.button}
-                onPress={() => console.log('clicked')}
+                style={{textAlign: "center",borderRadius: 4,color: 'white',padding: 10,backgroundColor: ifExists(sample) ? '#2D3038' : '#E7414D'}}
+                onPress={() => ifExists(sample) ? remove() : add()}
             >
+                <Text style={style.buttonText}>{ifExists(sample)? 'Retirer' : 'Ajouter'}</Text>
             </TouchableOpacity>
-            <Button title="Play Sound" onPress={playSound} />
+            <Button title="Ecouter" onPress={playSound} />
         </View>
     )
 }

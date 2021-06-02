@@ -4,7 +4,7 @@ import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityI
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import {Sampler} from "./Sampler";
 import {Local} from "./Local";
-import {Download} from "./download/Download";
+import {Freesound} from "./freesound/Freesound";
 import {Library} from "./library/Library";
 
 export const Main = () => {
@@ -39,7 +39,7 @@ export const Main = () => {
                         <Fontisto name="applemusic" color={color} size={size} />
                     )}}
                 name="Télécharger"
-                component={Download}/>
+                component={Freesound}/>
         </Tab.Navigator>
     )
 }
