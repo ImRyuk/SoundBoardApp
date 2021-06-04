@@ -74,12 +74,22 @@ export const LibrarySample = (props) => {
 
     async function playSound() {
         console.log('Loading Sound');
-        const { sound } = await Audio.Sound.createAsync(
-            {uri: item.url}
-        );
-        setSound(sound);
-        console.log('Playing Sound');
-        await sound.playAsync(); }
+        if(item.type === 'default'){
+            console.log(item.url);
+            const defaultSound = require("./../../assets/default/samples/cymbal.wav");
+            const { sound } = await Audio.Sound.createAsync(defaultSound);
+            setSound(sound);
+            console.log('Playing Sound');
+            await sound.playAsync();
+        } else {
+            const { sound } = await Audio.Sound.createAsync(
+                {uri: item.url}
+            );
+            setSound(sound);
+            console.log('Playing Sound');
+            await sound.playAsync();
+        }
+    }
 
     React.useEffect(() => {
         return sound

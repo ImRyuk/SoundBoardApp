@@ -1,25 +1,36 @@
 import {
-    ADD_FREESOUND_TO_LIBRARY,
-    ADD_TO_LIBRARY
-    , CHECK_IF_EXISTS, EDIT, REMOVE_FREESOUND_FROM_LIBRARY, REMOVE_FROM_LIBRARY,
+    ADD_FREESOUND_TO_LIBRARY
+    , CHECK_IF_EXISTS, EDIT, REMOVE_FREESOUND_FROM_LIBRARY,
 
 } from './freesound/actions';
 import {ADD_RECORD_TO_LIBRARY, REMOVE_RECORD_FROM_LIBRARY} from "./recorded/actions";
-import {TOGGLE_SAMPLE} from "./actions";
+import {TOGGLE_SAMPLE} from "../filter/actions";
 
 const initialState = {
     samples: [
         {
-            name: "cat mew",
+            name: "cymbal",
             type: "default",
-            url: "file://",
+            url: "cymbal.wav",
             id: 1,
         },
         {
             name: "dog mew",
             type: "default",
-            url: "file://fioerfhjeroifheroi",
+            url: "daibyoshi.wav",
             id: 2,
+        },
+        {
+            name: "dog mew",
+            type: "default",
+            url: "daibyoshi.wav",
+            id: 3,
+        },
+        {
+            name: "dog mew",
+            type: "default",
+            url: "daibyoshi.wav",
+            id: 4,
         },
     ]
 };
@@ -76,7 +87,6 @@ const sampleReducer = (state = initialState, action) => {
 }
 
 export const filteredSamplesSelector = (state) => {
-    console.log(state.samples)
     switch (state.filter) {
         case "all":
             return state.samples.samples;

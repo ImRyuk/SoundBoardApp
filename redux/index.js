@@ -2,7 +2,7 @@
 import { combineReducers } from 'redux';
 // Imports: Reducers
 import sampleReducer from './library/sampleReducer';
-import filterReducer from "./library/filterReducer";
+import filterReducer from "./filter/filterReducer";
 
 // Redux: Root Reducer
 const rootReducer = combineReducers({

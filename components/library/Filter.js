@@ -1,5 +1,6 @@
 import React from "react";
-import { Button, View } from "react-native";
+import { Button } from "react-native-elements";
+import {View} from "react-native";
 import { useDispatch } from "react-redux";
 import {setFilter} from "../../redux/filter/actions";
 

@@ -23,10 +23,7 @@ const style = StyleSheet.create({
 export const Library =  (props) => {
 
     const navigation = props.navigation;
-    const samples = useSelector(state => state.samples.samples);
-
-    const samples2 = useSelector(filteredSamplesSelector);
-    console.log(samples2);
+    const samples = useSelector(filteredSamplesSelector);
 
     const renderItem = ({item, index}) => (
         <ListItem style={style.container} linearGradientProps={{
@@ -52,7 +49,7 @@ export const Library =  (props) => {
             <Filter />
             <Button title={'Record'} onPress={() => navigation.navigate('Record')}/>
             <FlatList
-                data={samples2}
+                data={samples}
                 keyExtractor={item => item.id}
                 renderItem={renderItem}
             />

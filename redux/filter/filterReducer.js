@@ -1,4 +1,4 @@
-import {SET_FILTER} from "../filter/actions";
+import {SET_FILTER} from "./actions";
 
 const initialState = "all";
 

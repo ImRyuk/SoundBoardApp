@@ -4,7 +4,7 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 
 import sampleReducer from "./library/sampleReducer";
 import thunk from "redux-thunk";
-import filterReducer from "./library/filterReducer";
+import filterReducer from "./filter/filterReducer";
 
 const persistConfig = {
     key: "brkp",
