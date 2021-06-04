@@ -25,8 +25,6 @@ export const Library =  (props) => {
     const navigation = props.navigation;
     const samples = useSelector(state => state.samples.samples);
 
-    console.log(samples)
-
     const dispatch = useDispatch();
 
     const renderItem = ({item, index}) => (
@@ -42,8 +40,8 @@ export const Library =  (props) => {
                 <ListItem.Subtitle style={style.subtitle}>{item.duration}</ListItem.Subtitle>
             </ListItem.Content>
             <ListItem.Chevron onPress={() => {
-                navigation.navigate('LocalTrack', {
-                    track: item
+                navigation.navigate('LibrarySample', {
+                    sample: item
                 });
             }} color="white"/>
         </ListItem>
@@ -55,7 +53,7 @@ export const Library =  (props) => {
             <Button title={'Record'} onPress={() => navigation.navigate('Record')}/>
             <FlatList
                 data={samples}
-                keyExtractor={item => item.id.toString()}
+                keyExtractor={item => item.id}
                 renderItem={renderItem}
             />
         </View>

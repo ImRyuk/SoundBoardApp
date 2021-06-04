@@ -2,15 +2,14 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c96da48-7025-438b-9168-d37c7485923c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/components/library/Record.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/components/library/LibrarySample.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/redux/library/recorded/actions.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/library/Library.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/library/Library.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/library/Record.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/library/Record.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux/library/freesound/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/library/freesound/actions.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/redux/library/sampleReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/library/sampleReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -68,7 +67,8 @@
       <workItem from="1622471857807" duration="7577000" />
       <workItem from="1622567583075" duration="95000" />
       <workItem from="1622643431024" duration="12804000" />
-      <workItem from="1622736126502" duration="13918000" />
+      <workItem from="1622736126502" duration="15310000" />
+      <workItem from="1622800858025" duration="3120000" />
     </task>
     <servers />
   </component>

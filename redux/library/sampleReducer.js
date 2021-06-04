@@ -1,8 +1,10 @@
 import {
+    ADD_FREESOUND_TO_LIBRARY,
     ADD_TO_LIBRARY
-    , CHECK_IF_EXISTS, EDIT, REMOVE_FROM_LIBRARY,
+    , CHECK_IF_EXISTS, EDIT, REMOVE_FREESOUND_FROM_LIBRARY, REMOVE_FROM_LIBRARY,
 
 } from './freesound/actions';
+import {ADD_RECORD_TO_LIBRARY} from "./recorded/actions";
 
 const initialState = {
     samples: [
@@ -23,17 +25,25 @@ const initialState = {
 
 const sampleReducer = (state = initialState, action) => {
     switch (action.type) {
-        case ADD_TO_LIBRARY:
+        case ADD_FREESOUND_TO_LIBRARY:
             console.log(action);
-            let id = action.payload.id;
-            let name = action.payload.name;
-            let type = 'freesound';
-            let description = action.payload.description;
-            let duration = action.payload.duration;
-            let url = action.payload.previews['preview-lq-mp3'];
-            const sample = {id: id, name: name,description: description, type: type,duration: duration, url: url}
-            return { ...state, samples: [...state.samples, sample] };
-        case REMOVE_FROM_LIBRARY:
+            let freesoundId = action.payload.id;
+            let freesoundName = action.payload.name;
+            let freesoundType = 'freesound';
+            let freesoundDescription = action.payload.description;
+            let freesoundDuration = action.payload.duration;
+            let freesoundUrl = action.payload.previews['preview-lq-mp3'];
+            const freesoundSample = {id: freesoundId, name: freesoundName,description: freesoundDescription, type: freesoundType,duration: freesoundDuration, url: freesoundUrl}
+            return { ...state, samples: [...state.samples, freesoundSample] };
+        case ADD_RECORD_TO_LIBRARY:
+            console.log(action);
+            let recordedId = action.payload.id;
+            let recordedName = action.payload.name;
+            let recordedType = 'recorded';
+            let recordedUrl = action.payload.url;
+            const recordedSample = {id: recordedId, name: recordedName, type: recordedType, url: recordedUrl}
+            return { ...state, samples: [...state.samples, recordedSample] };
+        case REMOVE_FREESOUND_FROM_LIBRARY:
             console.log(action.payload.id);
             return {
                 ...state,

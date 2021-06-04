@@ -4,18 +4,23 @@ import { Audio } from 'expo-av';
 import * as FS from 'expo-file-system';
 import Dialog from "react-native-dialog";
 import {useState} from "react";
+import {useDispatch, useSelector} from "react-redux";
+import {addSample} from "../../redux/library/recorded/actions";
 
 export const Record = (props) => {
+    const samples = useSelector(state => state.samples.samples);
     const navigation = props.navigation;
     const samplesDir = FS.documentDirectory + 'samplesDir/';
 
     const [recording, setRecording] = useState();
     const [sampleName, setSampleName] = useState();
     const [visible, setVisible] = useState(true);
+    const [sample, setSample] =  useState();
+    const dispatch = useDispatch();
 
     async function ensureDirExists() {
+        await FS.deleteAsync(samplesDir)
         const dirInfo = await FS.getInfoAsync(samplesDir);
-        console.log(dirInfo);
         if (!dirInfo.exists) {
             console.log("Samples directory doesn't exist, creating...");
             await FS.makeDirectoryAsync(samplesDir, { intermediates: true });
@@ -26,7 +31,6 @@ export const Record = (props) => {
         try {
             console.log('Requesting permissions..');
             await Audio.requestPermissionsAsync();
-            console.log(Audio.getPermissionsAsync());
             await Audio.setAudioModeAsync({
                 allowsRecordingIOS: true,
                 playsInSilentModeIOS: true,
@@ -42,6 +46,12 @@ export const Record = (props) => {
         }
     }
 
+    async function createSample(url) {
+        const sample = {id: samples.length + 1, name: sampleName, url: url}
+        await setSample(sample)
+        dispatch(addSample(sample));
+    }
+
     async function stopRecording() {
         console.log('Stopping recording..');
         setRecording(undefined);
@@ -50,11 +60,12 @@ export const Record = (props) => {
         const uri = recording.getURI()
         const newuri = samplesDir + sampleName + ".caf";
 
-        console.log(newuri);
         await FS.copyAsync({
             from : uri , to : newuri
         })
         console.log('Recording stopped and stored at', newuri);
+
+        await createSample(newuri);
     }
 
     const handleName = () => {

@@ -8,6 +8,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { store, persistor } from './redux/library/store';
 import {Record} from "./components/library/Record";
+import {LibrarySample} from "./components/library/LibrarySample"
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -49,6 +50,20 @@ export default function App() {
                         component={Record}
                         options={{
                             title: 'Recording Sampler',
+                            headerStyle: {
+                                backgroundColor: '#E7414D',
+                            },
+                            headerTintColor: '#fff',
+                            headerTitleStyle: {
+                                fontWeight: 'bold',
+                            },
+                        }}
+                    />
+                    <Stack.Screen
+                        name="LibrarySample"
+                        component={LibrarySample}
+                        options={{
+                            title: 'Library Sound',
                             headerStyle: {
                                 backgroundColor: '#E7414D',
                             },
