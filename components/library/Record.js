@@ -1,0 +1,83 @@
+import * as React from 'react';
+import { View, Button } from 'react-native';
+import { Audio } from 'expo-av';
+import * as FS from 'expo-file-system';
+import Dialog from "react-native-dialog";
+import {useState} from "react";
+
+export const Record = (props) => {
+    const navigation = props.navigation;
+    const samplesDir = FS.documentDirectory + 'samplesDir/';
+
+    const [recording, setRecording] = useState();
+    const [sampleName, setSampleName] = useState();
+    const [visible, setVisible] = useState(true);
+
+    async function ensureDirExists() {
+        const dirInfo = await FS.getInfoAsync(samplesDir);
+        console.log(dirInfo);
+        if (!dirInfo.exists) {
+            console.log("Samples directory doesn't exist, creating...");
+            await FS.makeDirectoryAsync(samplesDir, { intermediates: true });
+        }
+    }
+
+    async function startRecording() {
+        try {
+            console.log('Requesting permissions..');
+            await Audio.requestPermissionsAsync();
+            console.log(Audio.getPermissionsAsync());
+            await Audio.setAudioModeAsync({
+                allowsRecordingIOS: true,
+                playsInSilentModeIOS: true,
+            });
+            console.log('Starting recording..');
+            const recording = new Audio.Recording();
+            await recording.prepareToRecordAsync(Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY);
+            await recording.startAsync();
+            setRecording(recording);
+            console.log('Recording started');
+        } catch (err) {
+            console.error('Failed to start recording', err);
+        }
+    }
+
+    async function stopRecording() {
+        console.log('Stopping recording..');
+        setRecording(undefined);
+        await recording.stopAndUnloadAsync();
+        await ensureDirExists();
+        const uri = recording.getURI()
+        const newuri = samplesDir + sampleName + ".caf";
+
+        console.log(newuri);
+        await FS.copyAsync({
+            from : uri , to : newuri
+        })
+        console.log('Recording stopped and stored at', newuri);
+    }
+
+    const handleName = () => {
+        setVisible(false);
+    };
+
+    return (
+        <View>
+            <Dialog.Container visible={visible}>
+                <Dialog.Title>Record Name</Dialog.Title>
+                <Dialog.Description>
+                    Nom du sample? (.wav)
+                </Dialog.Description>
+                <Dialog.Input onChangeText={(text) => setSampleName(text) }/>
+                <Dialog.Button label="Annuler" onPress={() => {
+                    navigation.navigate('Main');
+                }} />
+                <Dialog.Button label="Valider" onPress={handleName}/>
+            </Dialog.Container>
+            <Button
+                title={recording ? 'Stop Recording' : 'Start Recording'}
+                onPress={recording ? stopRecording : startRecording}
+            />
+        </View>
+    );
+}

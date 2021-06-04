@@ -7,6 +7,7 @@ import {Sound} from "./components/freesound/Sound";
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { store, persistor } from './redux/library/store';
+import {Record} from "./components/library/Record";
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -34,6 +35,20 @@ export default function App() {
                         component={Sound}
                         options={{
                             title: 'Searched Sound',
+                            headerStyle: {
+                                backgroundColor: '#E7414D',
+                            },
+                            headerTintColor: '#fff',
+                            headerTitleStyle: {
+                                fontWeight: 'bold',
+                            },
+                        }}
+                    />
+                    <Stack.Screen
+                        name="Record"
+                        component={Record}
+                        options={{
+                            title: 'Recording Sampler',
                             headerStyle: {
                                 backgroundColor: '#E7414D',
                             },
