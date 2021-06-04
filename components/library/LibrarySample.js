@@ -1,9 +1,9 @@
 import React, { useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View, Button} from "react-native";
-import {Image} from "react-native-elements";
 import {useDispatch, useSelector} from 'react-redux';
 import { Audio } from 'expo-av';
-import {addSample, removeSample} from "../../redux/library/freesound/actions";
+import { removeSample} from "../../redux/library/freesound/actions";
+import * as FS from 'expo-file-system';
 
 const style = StyleSheet.create({
     container: {
@@ -44,15 +44,30 @@ const TextItem = (props) => {
 
 export const LibrarySample = (props) => {
 
-    const samples = useSelector(state => state.samples.samples)
-    const [sample, setSample] =  useState(props.route.params.sound);
     const dispatch = useDispatch();
 
-    const remove = () => {
-        dispatch(removeSample(sample));
-    };
+    async function deleteRecordedSample(uri) {
+        await FS.deleteAsync(uri)
+        console.log('sample' + uri + ' Supprimé!');
+    }
 
-    console.log(props);
+    const remove = () => {
+        const type = item.type;
+        switch (type) {
+            case 'freesound':
+                console.log('freesound');
+                dispatch(removeSample(item));
+                break;
+            case 'recorded':
+                console.log('recorded');
+                deleteRecordedSample(item.url).then(r => dispatch(removeSample(item)));
+                break;
+            default:
+                console.log(`default`);
+        }
+        alert('Sample retiré!');
+        props.navigation.navigate('Main')
+    };
 
     const item = props.route.params.sample;
     const [sound, setSound] = useState();
@@ -73,7 +88,6 @@ export const LibrarySample = (props) => {
                 sound.unloadAsync(); }
             : undefined;
     }, [sound]);
-
 
     return(
         <View style={style.container}>

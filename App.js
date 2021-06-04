@@ -6,7 +6,7 @@ import {Main} from "./components/Main";
 import {Sound} from "./components/freesound/Sound";
 import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
-import { store, persistor } from './redux/library/store';
+import { store, persistor } from './redux/store';
 import {Record} from "./components/library/Record";
 import {LibrarySample} from "./components/library/LibrarySample"
 

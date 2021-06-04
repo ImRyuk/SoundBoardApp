@@ -2,17 +2,20 @@ import {createStore, combineReducers, applyMiddleware, compose} from "redux";
 import { persistStore, persistReducer } from "redux-persist";
 import AsyncStorage from '@react-native-async-storage/async-storage';
 
-import sampleReducer from "./sampleReducer";
+import sampleReducer from "./library/sampleReducer";
 import thunk from "redux-thunk";
+import filterReducer from "./library/filterReducer";
 
 const persistConfig = {
     key: "brkp",
     storage: AsyncStorage,
-    whitelist: ['samples']
+    whitelist: ['samples'],
+    blacklist: ['filter']
 };
 
 const rootReducer = combineReducers({
     samples: sampleReducer,
+    filter: filterReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

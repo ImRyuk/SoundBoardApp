@@ -18,6 +18,17 @@ export const Record = (props) => {
     const [sample, setSample] =  useState();
     const dispatch = useDispatch();
 
+    function generateID(){
+        function chr4(){
+            return Math.random().toString(16).slice(-4);
+        }
+        return chr4() + chr4() +
+            '-' + chr4() +
+            '-' + chr4() +
+            '-' + chr4() +
+            '-' + chr4() + chr4() + chr4();
+    }
+
     async function ensureDirExists() {
         await FS.deleteAsync(samplesDir)
         const dirInfo = await FS.getInfoAsync(samplesDir);
@@ -47,7 +58,7 @@ export const Record = (props) => {
     }
 
     async function createSample(url) {
-        const sample = {id: samples.length + 1, name: sampleName, url: url}
+        const sample = {id: generateID(), name: sampleName, url: url}
         await setSample(sample)
         dispatch(addSample(sample));
     }

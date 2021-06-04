@@ -1,10 +1,10 @@
 import React from 'react'
-import {View, Text, FlatList, Image, TouchableOpacity, StyleSheet, Button} from 'react-native';
-import {useDispatch, useSelector} from "react-redux";
-import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
-import {Avatar, ListItem} from "react-native-elements";
+import {View, Text, FlatList, StyleSheet, Button} from 'react-native';
+import { useSelector} from "react-redux";
+import {ListItem} from "react-native-elements";
 import {LinearGradient} from "expo-linear-gradient";
-import { Audio } from 'expo-av';
+import Filter from "./Filter";
+import {filteredSamplesSelector} from "../../redux/library/sampleReducer";
 
 const style = StyleSheet.create({
     container: {
@@ -25,7 +25,8 @@ export const Library =  (props) => {
     const navigation = props.navigation;
     const samples = useSelector(state => state.samples.samples);
 
-    const dispatch = useDispatch();
+    const samples2 = useSelector(filteredSamplesSelector);
+    console.log(samples2);
 
     const renderItem = ({item, index}) => (
         <ListItem style={style.container} linearGradientProps={{
@@ -34,10 +35,8 @@ export const Library =  (props) => {
             end: {x: 0.2, y: 0},
         }}
                   ViewComponent={LinearGradient}>
-            <Avatar source={{uri: item.image}}/>
             <ListItem.Content>
                 <ListItem.Title style={style.title}>{item.name}</ListItem.Title>
-                <ListItem.Subtitle style={style.subtitle}>{item.duration}</ListItem.Subtitle>
             </ListItem.Content>
             <ListItem.Chevron onPress={() => {
                 navigation.navigate('LibrarySample', {
@@ -48,11 +47,12 @@ export const Library =  (props) => {
     )
 
     return (
-        <View className="movies">
+        <View className="samples">
             <Text h2>Ma liste de musiques</Text>
+            <Filter />
             <Button title={'Record'} onPress={() => navigation.navigate('Record')}/>
             <FlatList
-                data={samples}
+                data={samples2}
                 keyExtractor={item => item.id}
                 renderItem={renderItem}
             />

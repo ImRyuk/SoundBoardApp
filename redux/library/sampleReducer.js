@@ -4,7 +4,8 @@ import {
     , CHECK_IF_EXISTS, EDIT, REMOVE_FREESOUND_FROM_LIBRARY, REMOVE_FROM_LIBRARY,
 
 } from './freesound/actions';
-import {ADD_RECORD_TO_LIBRARY} from "./recorded/actions";
+import {ADD_RECORD_TO_LIBRARY, REMOVE_RECORD_FROM_LIBRARY} from "./recorded/actions";
+import {TOGGLE_SAMPLE} from "./actions";
 
 const initialState = {
     samples: [
@@ -49,6 +50,12 @@ const sampleReducer = (state = initialState, action) => {
                 ...state,
                 samples: state.samples.filter(sample => sample.id !== action.payload.id)
             };
+        case REMOVE_RECORD_FROM_LIBRARY:
+            console.log(action.payload.id);
+            return {
+                ...state,
+                samples: state.samples.filter(sample => sample.id !== action.payload.id)
+            };
         case EDIT:
             return state.map((item) =>
                 item.id === action.payload.id
@@ -57,9 +64,29 @@ const sampleReducer = (state = initialState, action) => {
             );
         case CHECK_IF_EXISTS:
             return state.filter((item) => item.id === action.payload.id);
+        case TOGGLE_SAMPLE:
+            return state.map((item) =>
+                item.id === action.payload
+                    ? { ...item, type: !item.type }
+                    : item
+            );
         default:
             return state;
     }
 }
+
+export const filteredSamplesSelector = (state) => {
+    console.log(state.samples)
+    switch (state.filter) {
+        case "all":
+            return state.samples.samples;
+        case "default":
+            return state.samples.samples.filter((item) => item.type==='default');
+        case "recorded":
+            return state.samples.samples.filter((item) => item.type==='recorded');
+        case "freesound":
+            return state.samples.samples.filter((item) => item.type==='freesound');
+    }
+};
 
 export default sampleReducer;
