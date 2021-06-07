@@ -4,6 +4,7 @@ import {useDispatch, useSelector} from 'react-redux';
 import { Audio } from 'expo-av';
 import { removeSample} from "../../redux/library/freesound/actions";
 import * as FS from 'expo-file-system';
+import {SampleRequire} from "../defaults/SampleRequire";
 
 const style = StyleSheet.create({
     container: {
@@ -75,15 +76,15 @@ export const LibrarySample = (props) => {
     async function playSound() {
         console.log('Loading Sound');
         if(item.type === 'default'){
-            console.log(item.url);
-            const defaultSound = require("./../../assets/default/samples/cymbal.wav");
+            console.log(item.url );
+            const defaultSound = SampleRequire(item);
             const { sound } = await Audio.Sound.createAsync(defaultSound);
             setSound(sound);
             console.log('Playing Sound');
             await sound.playAsync();
         } else {
             const { sound } = await Audio.Sound.createAsync(
-                {uri: item.url}
+                {uri: item.uri}
             );
             setSound(sound);
             console.log('Playing Sound');

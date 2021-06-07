@@ -57,8 +57,8 @@ export const Record = (props) => {
         }
     }
 
-    async function createSample(url) {
-        const sample = {id: generateID(), name: sampleName, url: url}
+    async function createSample(uri) {
+        const sample = {id: generateID(), name: sampleName, uri: uri}
         await setSample(sample)
         dispatch(addSample(sample));
     }

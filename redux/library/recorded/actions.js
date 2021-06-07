@@ -1,6 +1,7 @@
 // Define action types
 export const ADD_RECORD_TO_LIBRARY = 'ADD_RECORD_TO_LIBRARY';
 export const REMOVE_RECORD_FROM_LIBRARY = 'REMOVE_RECORD_FROM_LIBRARY';
+export const PURGE = 'PURGE';
 
 export const addSample = sample => {
     return {
@@ -15,3 +16,9 @@ export const removeSample = sample => dispatch => {
         payload: sample
     });
 };
+
+export const clearStore = () => dispatch =>{
+    dispatch({
+        type: PURGE
+    })
+}

@@ -3,34 +3,40 @@ import {
     , CHECK_IF_EXISTS, EDIT, REMOVE_FREESOUND_FROM_LIBRARY,
 
 } from './freesound/actions';
-import {ADD_RECORD_TO_LIBRARY, REMOVE_RECORD_FROM_LIBRARY} from "./recorded/actions";
+import {ADD_RECORD_TO_LIBRARY, REMOVE_RECORD_FROM_LIBRARY, PURGE} from "./recorded/actions";
 import {TOGGLE_SAMPLE} from "../filter/actions";
 
 const initialState = {
     samples: [
         {
-            name: "cymbal",
+            name: "Cymbal",
             type: "default",
-            url: "cymbal.wav",
+            uri: "cymbal.wav",
             id: 1,
         },
         {
-            name: "dog mew",
+            name: "Daibyoshi",
             type: "default",
-            url: "daibyoshi.wav",
+            uri: "daibyoshi.wav",
             id: 2,
         },
         {
-            name: "dog mew",
+            name: "Med_Taiko",
             type: "default",
-            url: "daibyoshi.wav",
+            uri: "med_taiko.wav",
             id: 3,
         },
         {
-            name: "dog mew",
+            name: "Taiko",
             type: "default",
-            url: "daibyoshi.wav",
+            uri: "taiko.wav",
             id: 4,
+        },
+        {
+            name: "Tsuzumi",
+            type: "default",
+            uri: "tsuzumi.wav",
+            id: 5,
         },
     ]
 };
@@ -44,16 +50,16 @@ const sampleReducer = (state = initialState, action) => {
             let freesoundType = 'freesound';
             let freesoundDescription = action.payload.description;
             let freesoundDuration = action.payload.duration;
-            let freesoundUrl = action.payload.previews['preview-lq-mp3'];
-            const freesoundSample = {id: freesoundId, name: freesoundName,description: freesoundDescription, type: freesoundType,duration: freesoundDuration, url: freesoundUrl}
+            let freesoundUri = action.payload.previews['preview-lq-mp3'];
+            const freesoundSample = {id: freesoundId, name: freesoundName,description: freesoundDescription, type: freesoundType,duration: freesoundDuration, uri: freesoundUri}
             return { ...state, samples: [...state.samples, freesoundSample] };
         case ADD_RECORD_TO_LIBRARY:
             console.log(action);
             let recordedId = action.payload.id;
             let recordedName = action.payload.name;
             let recordedType = 'recorded';
-            let recordedUrl = action.payload.url;
-            const recordedSample = {id: recordedId, name: recordedName, type: recordedType, url: recordedUrl}
+            let recordedUri = action.payload.uri;
+            const recordedSample = {id: recordedId, name: recordedName, type: recordedType, uri: recordedUri}
             return { ...state, samples: [...state.samples, recordedSample] };
         case REMOVE_FREESOUND_FROM_LIBRARY:
             console.log(action.payload.id);
@@ -81,6 +87,9 @@ const sampleReducer = (state = initialState, action) => {
                     ? { ...item, type: !item.type }
                     : item
             );
+        case PURGE:
+            console.log("Clearing store...");
+            return initialState;
         default:
             return state;
     }
