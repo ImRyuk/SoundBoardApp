@@ -1,6 +1,6 @@
 import React, { useState} from 'react';
 import {StyleSheet, Text, TouchableOpacity, View, Button} from "react-native";
-import {useDispatch, useSelector} from 'react-redux';
+import {useDispatch} from 'react-redux';
 import { Audio } from 'expo-av';
 import { removeSample} from "../../redux/library/freesound/actions";
 import * as FS from 'expo-file-system';

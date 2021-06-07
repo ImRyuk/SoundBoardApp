@@ -8,7 +8,7 @@ import {setFilter} from "../../redux/filter/actions";
 const Filter = () => {
     const dispatch = useDispatch();
     return (
-        <View style={{ flexDirection: "row" }}>
+        <View style={{ flexDirection: "row" , justifyContent:'space-around'}}>
             <Button
                 title="all"
                 onPress={() => {

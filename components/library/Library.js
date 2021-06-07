@@ -1,5 +1,6 @@
 import React from 'react'
-import {View, Text, FlatList, StyleSheet, Button} from 'react-native';
+import {View, FlatList, StyleSheet, Button} from 'react-native';
+import {Text} from 'react-native-elements';
 import { useSelector} from "react-redux";
 import {ListItem} from "react-native-elements";
 import {LinearGradient} from "expo-linear-gradient";
@@ -24,6 +25,7 @@ export const Library =  (props) => {
 
     const navigation = props.navigation;
     const samples = useSelector(filteredSamplesSelector);
+    const filter = useSelector(state => state.filter);
 
     const renderItem = ({item, index}) => (
         <ListItem style={style.container} linearGradientProps={{
@@ -44,15 +46,19 @@ export const Library =  (props) => {
     )
 
     return (
-        <View className="samples">
-            <Text h2>Ma liste de musiques</Text>
-            <Filter />
-            <Button title={'Record'} onPress={() => navigation.navigate('Record')}/>
+        <View className="samples" style={{ height: '100%' }}>
+            <View style={{ height: '20%', width: '100%' }}>
+                <Text h2>Ma liste de musiques</Text>
+                <Filter />
+                <Text>Filtre: {filter} ({samples.length})</Text>
+            </View>
             <FlatList
+                style={{ height: '70%' }}
                 data={samples}
                 keyExtractor={item => item.id}
                 renderItem={renderItem}
             />
+            <Button title={'Record'} style={{ height: '10%' }} onPress={() => navigation.navigate('Record')}/>
         </View>
     )
 }

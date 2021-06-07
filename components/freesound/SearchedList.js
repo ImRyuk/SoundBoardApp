@@ -1,8 +1,9 @@
-import React, {useEffect} from 'react';
+import React, {useEffect, useState} from 'react';
 import {View, Text, FlatList, StyleSheet} from "react-native";
 import {Avatar, ListItem} from "react-native-elements";
 import {LinearGradient} from "expo-linear-gradient";
 import axios from "axios";
+import Spinner from "react-native-loading-spinner-overlay";
 
 const style = StyleSheet.create({
     container: {
@@ -19,18 +20,19 @@ const style = StyleSheet.create({
 });
 
 export function SearchedList (props) {
+    const[loading, setLoading] = useState(false);
     const sounds = props.sounds;
     const navigation = props.navigation;
 
     const handleSound = (sound) => {
-
-        console.log(sound.id);
+        setLoading(true),
             axios.get('https://freesound.org/apiv2/sounds/' + sound.id +'?&token=SwLolZcTQXWhsHzHE2ym0IPuCZmzJnyzx1d0p6Xb')
                 .then(function (response) {
                     if(response.data.id === 0){
                         alert('aucun résultat!')
                     } else {
                         const sound = response.data;
+                        setLoading(false);
                         navigation.navigate('Sound', {
                             sound: sound
                         });
@@ -51,7 +53,10 @@ export function SearchedList (props) {
             <ListItem.Content>
                 <ListItem.Title style={style.title}>{item.name}</ListItem.Title>
             </ListItem.Content>
-            <ListItem.Chevron onPress={() => {handleSound(item)}} color="white" />
+            {loading ? <Spinner
+                visible={loading}
+                textContent={'Loading...'}
+            /> : <ListItem.Chevron onPress={() => {handleSound(item)}} color="white" />}
         </ListItem>
     )
 
