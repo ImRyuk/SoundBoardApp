@@ -1,7 +1,7 @@
 import React from 'react';
 
-export const SampleRequire = (item) => {
-    switch (item.id) {
+export const SampleRequire = (id) => {
+    switch (id) {
         case 1:
             return require("./../../assets/default/samples/cymbal.wav");
         case 2:

@@ -2,12 +2,12 @@ import React from 'react';
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Fontisto from 'react-native-vector-icons/Fontisto';
-import {Sampler} from "./Sampler";
+import {Sampler} from "./sampler/Sampler";
 import {Local} from "./Local";
 import {Freesound} from "./freesound/Freesound";
 import {Library} from "./library/Library";
 
-export const Main = () => {
+export const Main = (props) => {
     const Tab = createBottomTabNavigator();
     return(
         <Tab.Navigator

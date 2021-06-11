@@ -5,17 +5,19 @@ import AsyncStorage from '@react-native-async-storage/async-storage';
 import sampleReducer from "./library/sampleReducer";
 import thunk from "redux-thunk";
 import filterReducer from "./filter/filterReducer";
+import padReducer from "./pads/padReducer";
 
 const persistConfig = {
     key: "brkp",
     storage: AsyncStorage,
-    whitelist: ['samples'],
+    whitelist: ['samples', 'pads'],
     blacklist: ['filter']
 };
 
 const rootReducer = combineReducers({
     samples: sampleReducer,
-    filter: filterReducer
+    filter: filterReducer,
+    pads: padReducer
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

@@ -1,6 +1,6 @@
 import React from 'react';
 import {createStackNavigator} from "@react-navigation/stack";
-import {Sampler} from "./components/Sampler";
+import {Sampler} from "./components/sampler/Sampler";
 import {NavigationContainer} from "@react-navigation/native";
 import {Main} from "./components/Main";
 import {Sound} from "./components/freesound/Sound";
@@ -8,7 +8,8 @@ import { PersistGate } from 'redux-persist/integration/react';
 import { Provider } from 'react-redux';
 import { store, persistor } from './redux/store';
 import {Record} from "./components/library/Record";
-import {LibrarySample} from "./components/library/LibrarySample"
+import {LibrarySample} from "./components/library/LibrarySample";
+import {Pad} from './components/sampler/Pad';
 
 export default function App() {
   const Stack = createStackNavigator();
@@ -64,6 +65,20 @@ export default function App() {
                         component={LibrarySample}
                         options={{
                             title: 'Library Sound',
+                            headerStyle: {
+                                backgroundColor: '#E7414D',
+                            },
+                            headerTintColor: '#fff',
+                            headerTitleStyle: {
+                                fontWeight: 'bold',
+                            },
+                        }}
+                    />
+                    <Stack.Screen
+                        name="Pad"
+                        component={Pad}
+                        options={{
+                            title: 'Pad Editing',
                             headerStyle: {
                                 backgroundColor: '#E7414D',
                             },

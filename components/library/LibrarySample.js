@@ -77,7 +77,7 @@ export const LibrarySample = (props) => {
         console.log('Loading Sound');
         if(item.type === 'default'){
             console.log(item.url );
-            const defaultSound = SampleRequire(item);
+            const defaultSound = SampleRequire(item.id);
             const { sound } = await Audio.Sound.createAsync(defaultSound);
             setSound(sound);
             console.log('Playing Sound');
