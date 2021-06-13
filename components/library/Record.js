@@ -28,10 +28,6 @@ export const Record = (props) => {
     }
 
     async function startRecording(){
-        let duration = setInterval(function () {
-            duration += 1000;
-            console.log(durationToStr(duration));
-        }, 1000);
         setVisible(false);
         try {
             console.log('Requesting permissions..');
@@ -59,7 +55,6 @@ export const Record = (props) => {
     }
 
     async function stopRecording() {
-        clearInterval(duration);
         console.log('Stopping recording..');
         setRecording(undefined);
         await recording.stopAndUnloadAsync();
@@ -71,15 +66,16 @@ export const Record = (props) => {
             from : uri , to : newuri
         })
         console.log('Recording stopped and stored at', newuri);
-
         await createSample(newuri);
+        navigation.navigate('Main');
+
     }
 
     if(recording){
         return (
             <View>
                 <Text >
-                    {durationToStr()}
+                    {durationToStr(recording.getStatusAsync().durationMillis)}
                 </Text>
                 <Button
                     title={'Stop Recording'}

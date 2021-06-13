@@ -5,10 +5,11 @@ import {Input} from "react-native-elements";
 
 const style = StyleSheet.create({
     button: {
+        marginBottom : 20,
         padding: 10,
         color: 'white',
         borderRadius: 4,
-        backgroundColor: "#E7414D",
+        backgroundColor: "#0081A7",
         textAlign: "center",
     },
     buttonText: {

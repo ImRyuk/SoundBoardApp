@@ -24,6 +24,13 @@ export function SearchedList (props) {
     const sounds = props.sounds;
     const navigation = props.navigation;
 
+    const getColor = (index) => {
+        let color;
+        index %2 === 0 ? color = {backgroundColor: '#00AFB9'} : color = {backgroundColor: '#F07167'} ;
+        return color;
+    }
+
+
     const handleSound = (sound) => {
         setLoading(true),
             axios.get('https://freesound.org/apiv2/sounds/' + sound.id +'?&token=SwLolZcTQXWhsHzHE2ym0IPuCZmzJnyzx1d0p6Xb')
@@ -44,25 +51,22 @@ export function SearchedList (props) {
     }
 
     const renderItem = ({ item, index }) => (
-        <ListItem style={style.container} linearGradientProps={{
-            colors: index %2 === 0 ? ['#7F7FD5', '#86A8E7', '#91EAE4'] : ['#fe8c00', '#f83600'],
-            start: { x: 0, y: 1 },
-            end: { x: 0.2, y: 0 },
-        }}
-                  ViewComponent={LinearGradient} >
+        <ListItem bottomDivider style={[style.container, getColor(index)]}
+                  onPress={() => {handleSound(item)}}
+        >
             <ListItem.Content>
-                <ListItem.Title style={style.title}>{item.name}</ListItem.Title>
+                <ListItem.Title>{item.name}</ListItem.Title>
+                <ListItem.Subtitle>{item.duration}</ListItem.Subtitle>
             </ListItem.Content>
             {loading ? <Spinner
                 visible={loading}
                 textContent={'Loading...'}
-            /> : <ListItem.Chevron onPress={() => {handleSound(item)}} color="white" />}
+            /> : <ListItem.Chevron color="black" />}
         </ListItem>
     )
 
     return (
         <View className="sounds">
-            <Text h2>Liste recherchée</Text>
             <FlatList
                 data={sounds}
                 keyExtractor={item => item.id}

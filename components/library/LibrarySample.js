@@ -48,8 +48,7 @@ export const LibrarySample = (props) => {
     const dispatch = useDispatch();
 
     async function deleteRecordedSample(uri) {
-        await FS.deleteAsync(uri)
-        console.log('sample' + uri + ' Supprimé!');
+        await FS.deleteAsync(uri).then(r => console.log('sample' + uri + ' Supprimé!'))
     }
 
     const remove = () => {
@@ -61,7 +60,8 @@ export const LibrarySample = (props) => {
                 break;
             case 'recorded':
                 console.log('recorded');
-                deleteRecordedSample(item.url).then(r => dispatch(removeSample(item)));
+                deleteRecordedSample(item.uri);
+                dispatch(removeSample(item));
                 break;
             default:
                 console.log(`default`);
@@ -105,12 +105,14 @@ export const LibrarySample = (props) => {
             <Text style={style.primaryText}>{item.name}</Text>
             <TextItem value={item.duration}/>
             <TextItem value={item.description}/>
-            <TouchableOpacity
-                style={{textAlign: "center",borderRadius: 4,color: 'white',padding: 10,backgroundColor: '#2D3038'}}
-                onPress={remove}
-            >
-                <Text style={style.buttonText}>{'Retirer'}</Text>
-            </TouchableOpacity>
+            {item.type === 'default' ? null :
+                <TouchableOpacity
+                    style={{textAlign: "center",borderRadius: 4,color: 'white',padding: 10,backgroundColor: '#2D3038'}}
+                    onPress={remove}
+                >
+                    <Text style={style.buttonText}>{'Retirer'}</Text>
+                </TouchableOpacity>
+            }
             <Button title="Ecouter" onPress={playSound} />
         </View>
     )

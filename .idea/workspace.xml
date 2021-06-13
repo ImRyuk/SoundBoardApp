@@ -2,19 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c96da48-7025-438b-9168-d37c7485923c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/utils/idGenerator.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/utils/timeHelper.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/library/Filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/library/Filter.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/library/Library.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/library/Library.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/freesound/Search.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/freesound/Search.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/library/LibrarySample.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/library/LibrarySample.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/library/Record.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/library/Record.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/sampler/Sampler.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/sampler/Sampler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -46,7 +37,7 @@
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="settings.editor.selected.configurable" value="MTConfigurable" />
-    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="ts.external.directory.path" value="D:\Program Files x86\PhpStorm 2020.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
