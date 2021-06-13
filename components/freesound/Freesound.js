@@ -12,7 +12,6 @@ const styles = StyleSheet.create({
     content: {
         alignItems: 'center'
     },
-    item: {}
 });
 
 export const Freesound = ({navigation}) => {

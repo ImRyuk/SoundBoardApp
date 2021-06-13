@@ -5,6 +5,7 @@ import {clearStore}  from "../../redux/library/recorded/actions";
 import {clearPads}  from "../../redux/pads/actions";
 import {Audio} from "expo-av";
 import {SampleRequire} from "../defaults/SampleRequire";
+import {getRandomColor} from "../../utils/colors";
 
 export const Sampler = ({navigation}) => {
     const dispatch = useDispatch();
@@ -18,22 +19,6 @@ export const Sampler = ({navigation}) => {
     }
 
     const samples = useSelector(state => state.samples.samples)
-
-    function getRandomColor() {
-        let number = Math.floor(Math.random() * 4);
-        switch (number) {
-            case 0:
-                return {backgroundColor: '#FDFCDC'}
-            case 1:
-                return {backgroundColor: '#F07167'}
-            case 2:
-                return {backgroundColor: '#0081A7'}
-            case 3:
-                return {backgroundColor: '#FED9B7'}
-            default:
-                return '#FED9B7'
-        }
-    }
 
     const padSelector = (pads) => {
         return pads.map((item) => {

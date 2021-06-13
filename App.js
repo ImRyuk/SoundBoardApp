@@ -20,7 +20,7 @@ export default function App() {
                 <Stack.Navigator
                     screenOptions={{
                         cardStyle: {
-                            backgroundColor: '#FDFCDC'
+                            backgroundColor: '#fff'
                         }
                     }}>
                   <Stack.Screen

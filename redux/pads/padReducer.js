@@ -18,12 +18,12 @@ const padReducer = (state = initPad(9), action) => {
     switch (action.type) {
         case CHANGE_SOURCE:
             return state.map((item) =>
-                item.id === action.payload.id
-                    ? { ...item, sampleId: action.payload.sampleId }
+                item.id === action.pad.id
+                    ? { ...item, sampleId: action.sampleId }
                     : item
             );
         case PURGE:
-            console.log("Clearing store...");
+            console.log("Clearing pad store...");
             return initPad(9);
         default:
             return state;

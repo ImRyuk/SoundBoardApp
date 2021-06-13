@@ -3,7 +3,6 @@ import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Fontisto from 'react-native-vector-icons/Fontisto';
 import {Sampler} from "./sampler/Sampler";
-import {Local} from "./Local";
 import {Freesound} from "./freesound/Freesound";
 import {Library} from "./library/Library";
 
@@ -28,7 +27,7 @@ export const Main = (props) => {
                 options={{
                     tabBarLabel: 'Sampler',
                     tabBarIcon: ({ color, size }) => (
-                        <MaterialCommunityIcons name="folder-music" color={color} size={size} />
+                        <MaterialCommunityIcons name="music-box-outline" color={color} size={size} />
                     )}}
                 name="Sampler"
                 component={Sampler}/>

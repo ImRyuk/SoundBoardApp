@@ -1,5 +1,5 @@
 import React, { useState} from 'react';
-import {StyleSheet, Text, TouchableOpacity, View, Button} from "react-native";
+import {StyleSheet, Text, TouchableOpacity, View, Button, ScrollView} from "react-native";
 import {Image} from "react-native-elements";
 import {useDispatch, useSelector} from 'react-redux';
 import { Audio } from 'expo-av';
@@ -7,16 +7,10 @@ import {addSample, removeSample} from "../../redux/library/freesound/actions";
 
 const style = StyleSheet.create({
     container: {
+        flex: 1,
         alignContent: 'center',
         alignItems: 'center',
         margin: 30
-    },
-    button: {
-        padding: 10,
-        color: 'white',
-        borderRadius: 4,
-        backgroundColor: "#E7414D",
-        textAlign: "center",
     },
     buttonText: {
         fontSize: 20,
@@ -27,20 +21,30 @@ const style = StyleSheet.create({
         margin: 20,
         fontWeight: 'bold'
     },
+    secondaryText: {
+        fontWeight: 'normal'
+    },
     textItem:{
         margin: 20
     },
     logo: {
         width: 200,
         height: 200
+    },
+    button:{
+        margin: 10,
+        textAlign: "center",
+        borderRadius: 4,
+        color: 'white',
+        padding: 10,
+        backgroundColor:'#F07167'
+    },
+    buttons: {
+        flexDirection: 'row',
+        margin: 10,
+        justifyContent: 'space-around'
     }
 });
-
-const TextItem = (props) => {
-    return(
-        <Text style={style.textItem}>{props.value}</Text>
-    )
-}
 
 export const Sound = (props) => {
 
@@ -87,21 +91,29 @@ export const Sound = (props) => {
 
     return(
         <View style={style.container}>
-            <Image
-                source={{ uri: item.images.spectral_m }}
-                style={style.logo}
-            />
-            <Text style={style.primaryText}>{item.name}</Text>
-            <TextItem value={item.duration}/>
-            <TextItem value={item.description}/>
-            <TextItem value={item.num_ratings}/>
-            <TouchableOpacity
-                style={{textAlign: "center",borderRadius: 4,color: 'white',padding: 10,backgroundColor: ifExists(sample) ? '#2D3038' : '#E7414D'}}
-                onPress={() => ifExists(sample) ? remove() : add()}
-            >
-                <Text style={style.buttonText}>{ifExists(sample)? 'Retirer' : 'Ajouter'}</Text>
-            </TouchableOpacity>
-            <Button title="Ecouter" onPress={playSound} />
+            <ScrollView contentContainerStyle={{ alignItems: 'center' }}>
+                <Image
+                    source={{ uri: item.images.spectral_m }}
+                    style={style.logo}
+                />
+                <Text style={style.primaryText}>{"Nom : "}<Text style={style.secondaryText}>{item.name}</Text></Text>
+                <Text style={style.primaryText}>{"Durée : "}<Text style={style.secondaryText}>{(item.duration)}</Text></Text>
+                <Text style={style.primaryText}>{"Description : "}<Text style={style.secondaryText}>{item.description}</Text></Text>
+                <View style={style.buttons}>
+                    <TouchableOpacity
+                        style={[style.button, {backgroundColor: ifExists(sample) ? '#00AFB9' : '#0081A7'}]}
+                        onPress={() => ifExists(sample) ? remove() : add()}
+                    >
+                        <Text style={style.buttonText}>{ifExists(sample)? 'Retirer' : 'Ajouter'}</Text>
+                    </TouchableOpacity>
+                    <TouchableOpacity
+                        style={style.button}
+                        onPress={playSound}
+                    >
+                        <Text style={style.buttonText}>{'Ecouter'}</Text>
+                    </TouchableOpacity>
+                </View>
+            </ScrollView>
         </View>
     )
 }

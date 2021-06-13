@@ -6,6 +6,7 @@ import {ListItem, Button} from "react-native-elements";
 import Filter from "./Filter";
 import {filteredSamplesSelector} from "../../redux/library/sampleReducer";
 import Icon from 'react-native-vector-icons/FontAwesome';
+import {getColor} from "../../utils/colors";
 
 const style = StyleSheet.create({
     container: {
@@ -35,20 +36,6 @@ const style = StyleSheet.create({
 });
 
 export const Library =  (props) => {
-
-    const getColor = (item) => {
-        switch (item.type) {
-            case 'default':
-                return {backgroundColor: '#00AFB9'};
-            case 'freesound':
-                return {backgroundColor: '#F07167'};
-            case 'recorded':
-                return {backgroundColor: '#FED9B7'};
-            default:
-                return {backgroundColor: '#0081A7'};
-        }
-
-    }
 
     const navigation = props.navigation;
     const samples = useSelector(filteredSamplesSelector);

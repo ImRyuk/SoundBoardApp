@@ -2,10 +2,11 @@
 export const CHANGE_SOURCE = 'CHANGE_SOURCE';
 export const PURGE = 'PURGE';
 
-export const changeSource = sample => dispatch => {
+export const changeSource = (pad, sampleId) => dispatch => {
     dispatch({
         type: CHANGE_SOURCE,
-        payload: sample
+        pad,
+        sampleId
     });
 };
 
