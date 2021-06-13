@@ -2,18 +2,15 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c96da48-7025-438b-9168-d37c7485923c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/utils/colors.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/sampleRequire.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Local.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/defaults/SampleRequire.js" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/components/freesound/Freesound.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/freesound/Freesound.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/freesound/Sound.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/freesound/Sound.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/library/Library.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/library/Library.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/freesound/SearchedList.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/freesound/SearchedList.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/library/Filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/library/Filter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/library/LibrarySample.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/library/LibrarySample.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/sampler/Pad.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/sampler/Pad.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/sampler/Sampler.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/sampler/Sampler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/pads/actions.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/pads/actions.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/pads/padReducer.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/pads/padReducer.js" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -82,6 +79,7 @@
       <workItem from="1623424797400" duration="4565000" />
       <workItem from="1623491006755" duration="111000" />
       <workItem from="1623491130849" duration="11275000" />
+      <workItem from="1623588811490" duration="2118000" />
     </task>
     <servers />
   </component>

@@ -1,7 +1,6 @@
-import React, {useEffect, useState} from 'react';
-import {View, Text, FlatList, StyleSheet} from "react-native";
-import {Avatar, ListItem} from "react-native-elements";
-import {LinearGradient} from "expo-linear-gradient";
+import React, {useState} from 'react';
+import {View, FlatList, StyleSheet} from "react-native";
+import { ListItem} from "react-native-elements";
 import axios from "axios";
 import Spinner from "react-native-loading-spinner-overlay";
 

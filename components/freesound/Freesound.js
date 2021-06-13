@@ -1,5 +1,5 @@
 import React, {useState} from 'react'
-import {Button, StyleSheet, Text, View} from 'react-native';
+import { StyleSheet, View} from 'react-native';
 import {Search} from "./Search";
 import {SearchedList} from "./SearchedList";
 import axios from "axios";

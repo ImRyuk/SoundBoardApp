@@ -1,10 +1,11 @@
-import React, {useState} from 'react';
+import React from 'react';
+import {Text as ElementText} from "react-native-elements";
 import {View, Button, Text, FlatList, Dimensions, TouchableOpacity, StyleSheet} from "react-native";
 import {useDispatch, useSelector} from "react-redux";
 import {clearStore}  from "../../redux/library/recorded/actions";
 import {clearPads}  from "../../redux/pads/actions";
 import {Audio} from "expo-av";
-import {SampleRequire} from "../defaults/SampleRequire";
+import {SampleRequire} from "../../utils/sampleRequire";
 import {getRandomColor} from "../../utils/colors";
 
 export const Sampler = ({navigation}) => {
@@ -24,15 +25,17 @@ export const Sampler = ({navigation}) => {
         return pads.map((item) => {
             let uri = "";
             let type = "";
+            let sampleName = "";
 
             for (let sample of samples) {
                 if (sample.id === item.sampleId) {
+                    sampleName = sample.name;
                     uri = sample.uri;
                     type = sample.type;
                     break;
                 }
             }
-            return { ...item, uri: uri, type:type };
+            return { ...item, uri: uri, type:type, sampleName: sampleName };
         });
     };
 
@@ -57,15 +60,15 @@ export const Sampler = ({navigation}) => {
         }
 
         return(
-            <View style={styles.container}>
+            <View style={style.container}>
                 <TouchableOpacity
-                    style={[styles.button, getRandomColor()]}
+                    style={[style.button, getRandomColor()]}
                     onPress={playSound}
                     onLongPress={() => navigation.navigate('Pad', {
                         pad: item
                     })}
                 >
-                    <Text >{item.name}</Text>
+                    <Text style={style.buttonText} >{item.sampleName}</Text>
                 </TouchableOpacity>
             </View>
             )
@@ -74,9 +77,10 @@ export const Sampler = ({navigation}) => {
     return(
         <View>
             <Button title={'Oui'} onPress={clearingPads}/>
+            <ElementText h2 style={style.title}>{'Sampler'}</ElementText>
             <View>
                 <FlatList
-                    style={styles.list}
+                    style={style.list}
                     numColumns={3}                  // set number of columns
                     data={pads}
                     keyExtractor={(item, index) => index }
@@ -88,7 +92,7 @@ export const Sampler = ({navigation}) => {
     )
 }
 
-const styles = StyleSheet.create({
+const style = StyleSheet.create({
     list:{
         width: Dimensions.get('window').width,
     },
@@ -99,6 +103,7 @@ const styles = StyleSheet.create({
         alignItems: 'center'
     },
     button: {
+        justifyContent: 'center',
         height: 100,
         width: 100,
         borderWidth: 2,
@@ -107,5 +112,14 @@ const styles = StyleSheet.create({
         borderColor: 'black',
         alignItems: "center",
         backgroundColor: "#DDDDDD",
+    },
+    buttonText: {
+        fontWeight: 'bold'
+    },
+    title: {
+        color: 'black',
+        fontWeight: 'bold',
+        textAlign: 'center',
+        margin: 10
     },
 });

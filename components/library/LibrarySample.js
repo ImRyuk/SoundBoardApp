@@ -4,20 +4,14 @@ import {useDispatch} from 'react-redux';
 import { Audio } from 'expo-av';
 import { removeSample} from "../../redux/library/freesound/actions";
 import * as FS from 'expo-file-system';
-import {SampleRequire} from "../defaults/SampleRequire";
+import {SampleRequire} from "../../utils/sampleRequire";
 
 const style = StyleSheet.create({
     container: {
+        flex: 1,
         alignContent: 'center',
         alignItems: 'center',
         margin: 30
-    },
-    button: {
-        padding: 10,
-        color: 'white',
-        borderRadius: 4,
-        backgroundColor: "#E7414D",
-        textAlign: "center",
     },
     buttonText: {
         fontSize: 20,
@@ -28,12 +22,28 @@ const style = StyleSheet.create({
         margin: 20,
         fontWeight: 'bold'
     },
+    secondaryText: {
+        fontWeight: 'normal'
+    },
     textItem:{
         margin: 20
     },
     logo: {
         width: 200,
         height: 200
+    },
+    button:{
+        margin: 10,
+        textAlign: "center",
+        borderRadius: 4,
+        color: 'white',
+        padding: 10,
+        backgroundColor:'#00AFB9'
+    },
+    buttons: {
+        flexDirection: 'row',
+        margin: 10,
+        justifyContent: 'space-around'
     }
 });
 
@@ -105,15 +115,22 @@ export const LibrarySample = (props) => {
             <Text style={style.primaryText}>{item.name}</Text>
             <TextItem value={item.duration}/>
             <TextItem value={item.description}/>
-            {item.type === 'default' ? null :
+            <View style={style.buttons}>
+                {item.type === 'default' ? null :
+                    <TouchableOpacity
+                        style={[style.button, {backgroundColor:'#F07167'}]}
+                        onPress={remove}
+                    >
+                        <Text style={style.buttonText}>{'Retirer'}</Text>
+                    </TouchableOpacity>
+                }
                 <TouchableOpacity
-                    style={{textAlign: "center",borderRadius: 4,color: 'white',padding: 10,backgroundColor: '#2D3038'}}
-                    onPress={remove}
+                    style={style.button}
+                    onPress={playSound}
                 >
-                    <Text style={style.buttonText}>{'Retirer'}</Text>
+                    <Text style={style.buttonText}>{'Ecouter'}</Text>
                 </TouchableOpacity>
-            }
-            <Button title="Ecouter" onPress={playSound} />
+            </View>
         </View>
     )
 }

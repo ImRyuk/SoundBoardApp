@@ -1,5 +1,6 @@
 import React from 'react';
 import {FlatList, StyleSheet, Text, View} from "react-native";
+import {Text as ElementText} from "react-native-elements";
 import {useDispatch, useSelector} from "react-redux";
 import {ListItem} from "react-native-elements";
 import {getColor} from "../../utils/colors";
@@ -28,7 +29,7 @@ const style = StyleSheet.create({
     },
     filterSelected: {
         fontWeight: 'normal'
-    }
+    },
 
 });
 
@@ -39,6 +40,7 @@ export const Pad = (props) => {
 
     const source = (pad, sample) => {
         dispatch(changeSource(pad, sample.id));
+        props.navigation.navigate('Main');
     }
 
     const renderItem = ({item, index}) => (
@@ -54,7 +56,7 @@ export const Pad = (props) => {
     return(
         <View className="samples" style={{ flex: 1 }}>
             <View>
-                <Text h2>Changer la source</Text>
+                <ElementText style={style.title} h2>Changer la source</ElementText>
             </View>
             <FlatList
                 data={samples}
