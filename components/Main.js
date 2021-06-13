@@ -11,9 +11,17 @@ export const Main = (props) => {
     const Tab = createBottomTabNavigator();
     return(
         <Tab.Navigator
+            screenOptions={{
+                tabBarOptions: {
+                    style: {
+                        backgroundColor: '#FDFCDC',
+                    },
+                },
+            }}
             tabBarOptions={{
-                activeTintColor: '#E7414D',
+                activeTintColor: '#00AFB9',
                 inactiveTintColor: 'gray',
+
             }}
         >
             <Tab.Screen

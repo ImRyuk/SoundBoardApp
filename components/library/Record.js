@@ -1,14 +1,15 @@
 import * as React from 'react';
-import { View, Button } from 'react-native';
+import { View, Button, Text } from 'react-native';
 import { Audio } from 'expo-av';
 import * as FS from 'expo-file-system';
 import Dialog from "react-native-dialog";
 import {useState} from "react";
 import {useDispatch, useSelector} from "react-redux";
 import {addSample} from "../../redux/library/recorded/actions";
+import {generateID} from "../../utils/idGenerator";
+import {durationToStr} from "../../utils/timeHelper";
 
 export const Record = (props) => {
-    const samples = useSelector(state => state.samples.samples);
     const navigation = props.navigation;
     const samplesDir = FS.documentDirectory + 'samplesDir/';
 
@@ -18,19 +19,7 @@ export const Record = (props) => {
     const [sample, setSample] =  useState();
     const dispatch = useDispatch();
 
-    function generateID(){
-        function chr4(){
-            return Math.random().toString(16).slice(-4);
-        }
-        return chr4() + chr4() +
-            '-' + chr4() +
-            '-' + chr4() +
-            '-' + chr4() +
-            '-' + chr4() + chr4() + chr4();
-    }
-
     async function ensureDirExists() {
-        await FS.deleteAsync(samplesDir)
         const dirInfo = await FS.getInfoAsync(samplesDir);
         if (!dirInfo.exists) {
             console.log("Samples directory doesn't exist, creating...");
@@ -38,7 +27,12 @@ export const Record = (props) => {
         }
     }
 
-    async function startRecording() {
+    async function startRecording(){
+        let duration = setInterval(function () {
+            duration += 1000;
+            console.log(durationToStr(duration));
+        }, 1000);
+        setVisible(false);
         try {
             console.log('Requesting permissions..');
             await Audio.requestPermissionsAsync();
@@ -50,6 +44,7 @@ export const Record = (props) => {
             const recording = new Audio.Recording();
             await recording.prepareToRecordAsync(Audio.RECORDING_OPTIONS_PRESET_HIGH_QUALITY);
             await recording.startAsync();
+            await recording.getStatusAsync();
             setRecording(recording);
             console.log('Recording started');
         } catch (err) {
@@ -64,6 +59,7 @@ export const Record = (props) => {
     }
 
     async function stopRecording() {
+        clearInterval(duration);
         console.log('Stopping recording..');
         setRecording(undefined);
         await recording.stopAndUnloadAsync();
@@ -79,27 +75,34 @@ export const Record = (props) => {
         await createSample(newuri);
     }
 
-    const handleName = () => {
-        setVisible(false);
-    };
+    if(recording){
+        return (
+            <View>
+                <Text >
+                    {durationToStr()}
+                </Text>
+                <Button
+                    title={'Stop Recording'}
+                    onPress={stopRecording}
+                />
+            </View>
+        );
+    } else {
+        return (
+            <View>
+                <Dialog.Container visible={visible}>
+                    <Dialog.Title>Record Name</Dialog.Title>
+                    <Dialog.Description>
+                        Nom du sample? (.wav)
+                    </Dialog.Description>
+                    <Dialog.Input onChangeText={(text) => setSampleName(text) }/>
+                    <Dialog.Button label="Annuler" onPress={() => {
+                        navigation.navigate('Main');
+                    }} />
+                    <Dialog.Button label="Valider" onPress={startRecording}/>
+                </Dialog.Container>
+            </View>
+        );
+    }
 
-    return (
-        <View>
-            <Dialog.Container visible={visible}>
-                <Dialog.Title>Record Name</Dialog.Title>
-                <Dialog.Description>
-                    Nom du sample? (.wav)
-                </Dialog.Description>
-                <Dialog.Input onChangeText={(text) => setSampleName(text) }/>
-                <Dialog.Button label="Annuler" onPress={() => {
-                    navigation.navigate('Main');
-                }} />
-                <Dialog.Button label="Valider" onPress={handleName}/>
-            </Dialog.Container>
-            <Button
-                title={recording ? 'Stop Recording' : 'Start Recording'}
-                onPress={recording ? stopRecording : startRecording}
-            />
-        </View>
-    );
 }

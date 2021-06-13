@@ -17,14 +17,19 @@ export default function App() {
       <Provider store={store}>
           <PersistGate loading={null} persistor={persistor}>
               <NavigationContainer>
-                <Stack.Navigator>
+                <Stack.Navigator
+                    screenOptions={{
+                        cardStyle: {
+                            backgroundColor: '#FDFCDC'
+                        }
+                    }}>
                   <Stack.Screen
                       name="Main"
                       component={Main}
                       options={{
                         title: 'SoundBoard App',
                         headerStyle: {
-                          backgroundColor: '#E7414D',
+                          backgroundColor: '#00AFB9',
                         },
                         headerTintColor: '#fff',
                         headerTitleStyle: {
@@ -38,7 +43,7 @@ export default function App() {
                         options={{
                             title: 'Searched Sound',
                             headerStyle: {
-                                backgroundColor: '#E7414D',
+                                backgroundColor: '#00AFB9',
                             },
                             headerTintColor: '#fff',
                             headerTitleStyle: {
@@ -52,7 +57,7 @@ export default function App() {
                         options={{
                             title: 'Recording Sampler',
                             headerStyle: {
-                                backgroundColor: '#E7414D',
+                                backgroundColor: '#00AFB9',
                             },
                             headerTintColor: '#fff',
                             headerTitleStyle: {
@@ -66,7 +71,7 @@ export default function App() {
                         options={{
                             title: 'Library Sound',
                             headerStyle: {
-                                backgroundColor: '#E7414D',
+                                backgroundColor: '#00AFB9',
                             },
                             headerTintColor: '#fff',
                             headerTitleStyle: {
@@ -80,7 +85,7 @@ export default function App() {
                         options={{
                             title: 'Pad Editing',
                             headerStyle: {
-                                backgroundColor: '#E7414D',
+                                backgroundColor: '#00AFB9',
                             },
                             headerTintColor: '#fff',
                             headerTitleStyle: {

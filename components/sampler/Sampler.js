@@ -23,15 +23,15 @@ export const Sampler = ({navigation}) => {
         let number = Math.floor(Math.random() * 4);
         switch (number) {
             case 0:
-                return {backgroundColor: 'blue'}
+                return {backgroundColor: '#FDFCDC'}
             case 1:
-                return {backgroundColor: 'green'}
+                return {backgroundColor: '#F07167'}
             case 2:
-                return {backgroundColor: 'red'}
+                return {backgroundColor: '#0081A7'}
             case 3:
-                return {backgroundColor: 'yellow'}
+                return {backgroundColor: '#FED9B7'}
             default:
-                return 'red'
+                return '#FED9B7'
         }
     }
 
@@ -105,15 +105,17 @@ export const Sampler = ({navigation}) => {
 
 const styles = StyleSheet.create({
     list:{
-        height: '100%',
-        width: '100%'
+        width: Dimensions.get('window').width,
     },
     container: {
         flex: 1,
-        margin: 10
+        width: Dimensions.get('window').width * 0.333,
+        margin: 10,
+        alignItems: 'center'
     },
     button: {
-        height: '100%',
+        height: 100,
+        width: 100,
         borderWidth: 2,
         borderRadius: 5,
         borderStyle: 'solid',

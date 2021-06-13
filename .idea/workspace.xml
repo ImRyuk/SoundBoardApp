@@ -2,18 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1c96da48-7025-438b-9168-d37c7485923c" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/components/sampler/Pad.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/redux/pads/actions.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/redux/pads/padReducer.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/idGenerator.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/utils/timeHelper.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/App.js" beforeDir="false" afterPath="$PROJECT_DIR$/App.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.json" beforeDir="false" afterPath="$PROJECT_DIR$/app.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/components/Main.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/Main.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/Sampler.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/sampler/Sampler.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/defaults/SampleRequire.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/defaults/SampleRequire.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/components/library/LibrarySample.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/library/LibrarySample.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/index.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/redux/store.js" beforeDir="false" afterPath="$PROJECT_DIR$/redux/store.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/library/Filter.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/library/Filter.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/library/Library.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/library/Library.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/library/Record.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/library/Record.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/components/sampler/Sampler.js" beforeDir="false" afterPath="$PROJECT_DIR$/components/sampler/Sampler.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/yarn.lock" beforeDir="false" afterPath="$PROJECT_DIR$/yarn.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -44,7 +45,8 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_package_manager_path" value="npm" />
-    <property name="ts.external.directory.path" value="D:\Program Files x86\PhpStorm 2020.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
+    <property name="settings.editor.selected.configurable" value="MTConfigurable" />
+    <property name="ts.external.directory.path" value="C:\Program Files\JetBrains\PhpStorm 2020.2.3\plugins\JavaScriptLanguage\jsLanguageServicesImpl\external" />
     <property name="vue.rearranger.settings.migration" value="true" />
   </component>
   <component name="RecentsManager">
@@ -78,6 +80,9 @@
       <workItem from="1623338522813" duration="7275000" />
       <workItem from="1623361395242" duration="2545000" />
       <workItem from="1623364597893" duration="8345000" />
+      <workItem from="1623424797400" duration="4565000" />
+      <workItem from="1623491006755" duration="111000" />
+      <workItem from="1623491130849" duration="11275000" />
     </task>
     <servers />
   </component>
@@ -95,5 +100,19 @@
       </map>
     </option>
     <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="521" y="202" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1623498799539">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="521" y="202" key="#com.intellij.fileTypes.FileTypeChooser/0.0.1536.824@0.0.1536.824" timestamp="1623498799539" />
+    <state x="338" y="78" key="SettingsEditor" timestamp="1623491293361">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="338" y="78" key="SettingsEditor/0.0.1536.824@0.0.1536.824" timestamp="1623491293361" />
+    <state x="479" y="145" width="578" height="534" key="find.popup" timestamp="1623428930747">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="479" y="145" width="578" height="534" key="find.popup/0.0.1536.824@0.0.1536.824" timestamp="1623428930747" />
   </component>
 </project>
