@@ -76,7 +76,7 @@ export const Sampler = ({navigation}) => {
 
     return(
         <View>
-            <Button title={'Oui'} onPress={clearingPads}/>
+            <Button title={'Reset Store'} onPress={clearingPads}/>
             <ElementText h2 style={style.title}>{'Sampler'}</ElementText>
             <View>
                 <FlatList
